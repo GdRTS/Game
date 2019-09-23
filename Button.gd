@@ -14,6 +14,5 @@ func _ready():
 
 
 func _on_Button_pressed():
-	#var network_service = get_node("/root/NetworkService")
-	#network_service.send_input("hello i am input")
-	pass
+	var command_service = get_node("/root/CommandService")
+	command_service.requestCommand('beep')

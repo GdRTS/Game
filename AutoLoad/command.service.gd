@@ -12,15 +12,14 @@ var commandRequests = [[]]
 var commands = [[],[]]
 
 func _ready():
-	add_to_group("_network_step")
+	add_to_group("sim")
 	print("Iterations per second: ", Engine.iterations_per_second)
 
 # runs 60 times per second by default
 var network_step = 0
 var iteration = 0
 func _physics_process(delta):
-	# TODO figure out a way to increase step that is independent of sim speed
-	if iteration % 30 == 0: # at 500ms intervals
+	if iteration % 60 == 0: # at 1s intervals
 		network_service.send_data(commandRequests[network_step], network_step)
 		# TODO pause game if we didnt receive commands in time
 		network_step += 1
